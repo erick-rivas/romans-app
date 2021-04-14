@@ -10,6 +10,7 @@ const App = () =>
       <Switch>
         <Route path="/romans" component={Romans} />
         <Route path="/examples" component={Examples} />
+        <Redirect to="/romans"/>
       </Switch>
     </BrowserRouter>
   </div>;

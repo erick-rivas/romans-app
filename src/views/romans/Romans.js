@@ -1,8 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
+import Details from "components/romans/Details";
+import List from "components/romans/List";
+import Execute from "components/romans/Execute";
+import { ModalRoute } from "seed/helpers";
+
 
 const Romans = (props) =>
-  <BrowserRouter basename="/examples/processes">
+  <BrowserRouter basename="/romans">
   <div class="content container-fluid">
 
   {/* Header */}
@@ -15,7 +23,7 @@ const Romans = (props) =>
 
       <div class="col-sm-auto">
         <div class="btn-group" role="group">
-          <Link to="/create" className="btn btn-primary">
+          <Link to="/new" className="btn btn-primary">
             <i class="tio-add mr-1"></i>Create
           </Link>
         </div>
@@ -25,18 +33,15 @@ const Romans = (props) =>
   </div>
 
   {/* List */}
-  <ProcessList />
+  <List />
 
   {/* Modals */}
   <ModalRoute
-      path="/:processId(\d+)"
-      component={ProcessDetails} />
+      path="/:processId(\d+)/characteres"
+      component={Details} />
   <ModalRoute
-    path="/create"
-    component={ProcessFormSave} />
-  <ModalRoute
-    path="/:processId(\d+)/edit"
-    component={ProcessFormSet} />
+    path="/new"
+    component={Execute} />
 
   </div>
   </BrowserRouter>;
